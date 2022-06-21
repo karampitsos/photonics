@@ -2,7 +2,6 @@ from typing import List, Optional
 from fittings import linear_fitting
 from zscan import Zscan
 import scipy.optimize
-#from sample import Sample
 import matplotlib.pyplot as plt 
 import numpy as np
 import csv

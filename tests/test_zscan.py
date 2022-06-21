@@ -1,6 +1,6 @@
 import pytest
-from sample import Sample, Laser
-from zscan import Zscan
+from nonlinear_optics import Sample, Laser
+from nonlinear_optics import Zscan
 from typing import List
 
 @pytest.fixture
