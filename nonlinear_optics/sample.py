@@ -1,8 +1,8 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
-from experiments import ZscanExperiment
-from spectrum import Spectrum
+from nonlinear_optics.experiments import ZscanExperiment
+from nonlinear_optics import Spectrum
 
 
 class Sample:

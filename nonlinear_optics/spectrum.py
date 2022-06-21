@@ -1,7 +1,6 @@
 from __future__ import annotations
 import os
 from typing import List
-#from sample import Sample
 import matplotlib.pyplot as plt
 from typing import Optional
 import csv

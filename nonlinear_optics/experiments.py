@@ -1,6 +1,6 @@
 from typing import List, Optional
-from fittings import linear_fitting
-from zscan import Zscan
+from nonlinear_optics.fittings import linear_fitting
+from nonlinear_optics import Zscan
 import scipy.optimize
 import matplotlib.pyplot as plt 
 import numpy as np

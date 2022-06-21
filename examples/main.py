@@ -1,9 +1,9 @@
 from typing import List
-from sample import Sample
-from sample import ZscanExperiment
-from sample import Spectrum
-from zscan import Zscan
-from reports import Report
+from nonlinear_optics import Sample
+from nonlinear_optics import ZscanExperiment
+from nonlinear_optics import Spectrum
+from nonlinear_optics import Zscan
+from nonlinear_optics import Report
 from docx import Document as Document_constructor
 
 

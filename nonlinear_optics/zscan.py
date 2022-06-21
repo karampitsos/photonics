@@ -4,7 +4,7 @@ from typing import List, Optional
 import numpy as np
 import scipy.optimize
 import csv
-from fittings import open_fitting_function, divided_fitting_function
+from nonlinear_optics.fittings import open_fitting_function, divided_fitting_function
 import matplotlib.pyplot as plt
 
 
@@ -31,15 +31,16 @@ class Zscan:
                 ):
         
         self.energy = energy
-        self.closed_aperture = closed_aperture
-        self.open_aperture = open_aperture
+        self.z = [round(point, 3) for point in z] 
+        self.closed_aperture = [round(point, 3) for point in closed_aperture]
+        self.open_aperture = [round(point, 3) for point in open_aperture]
         
         if divided_aperture:
-            self.divided_aperture = divided_aperture
+            self.divided_aperture = round(divided_aperture, 3)
         else:
-            self.divided_aperture = self.divided()
+            self.divided_aperture = self.divided(closed_aperture, open_aperture)
         
-        self.z = z  
+         
         self.dtpv: Optional[float] = None
         self.plato: Optional[float] = None
         self.estia: Optional[float] = None
@@ -55,12 +56,12 @@ class Zscan:
             self.fit_divided()
             self.fit_open()
 
-    def divided(self):
+    def divided(self, closed_aperture, open_aperture):
         divided: List[float] = []
-        for i, closed in enumerate(self.closed_aperture):
-            point = closed/self.open_aperture[i]
+        for i, closed in enumerate(closed_aperture):
+            point = closed/open_aperture[i]
             divided.append(point)
-        return divided
+        return [round(point, 3) for point in divided]
     
     def plot_divided_row(self):
         pass
@@ -115,11 +116,11 @@ class Zscan:
             maxfev=1000000
             )
         
-        self.plato = popt[0]
-        self.df = popt[1]
-        self.dtpv = 0.406*self.df/self.plato
-        self.estia = popt[2]
-        self.zo = popt[3]
+        self.plato = round(popt[0], 3)
+        self.df = round(popt[1], 3)
+        self.dtpv = round(0.406*self.df/self.plato, 3)
+        self.estia = round(popt[2], 3)
+        self.zo = round(popt[3], 3)
         
         return popt, pcov1
     
@@ -132,10 +133,10 @@ class Zscan:
             maxfev=1000000
             )
         
-        self.q = popt[0]
-        self.open_estia = popt[1]
-        self.open_zo = popt[2]
-        self.open_plato = popt[3]
+        self.q = round(popt[0], 3)
+        self.open_estia = round(popt[1], 3)
+        self.open_zo = round(popt[2], 3)
+        self.open_plato = round(popt[3], 3)
         
         return popt, pcov1
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import List, Optional
-from sample import Sample
+from nonlinear_optics import Sample
 import matplotlib.pyplot as plt
 from docx.document import Document
 
