@@ -1,6 +1,6 @@
 from typing import List
-from sample import Sample, Laser
-from zscan import Zscan
+from nonlinear_optics.sample import Sample, Laser
+from nonlinear_optics.zscan import Zscan
 
 
 scans: List[Zscan] = Zscan.create_from_folders(
